@@ -1,0 +1,21 @@
+Question 1:
+Did you choose to go with the ORM or raw SQL approach? What was the reason for your choice?
+
+I went with the ORM method, because after the lectures I didn't feel I understood it well, and this was an opportunity to test and build my understanding.
+
+Question 2:
+What endpoints (URLs and HTTP verb/methods) did you choose to implement in your Flask application, including any special details? 
+
+At the moment, i have created get/post/delete/put+patch endpoints for equipment types, as well as index. 
+
+Question 3:
+Brainstorm and describe some potential endpoints that you could implement in the future, that make sense for your application. 
+
+I would like to add one endpoint that navigates different tables, like "give all pump_models (entity) sold by a vendor(entity)"
+
+Question 4:
+What challenges did you face with the Flask implementation for your portfolio project this week, and did you learn anything new from these challenges?
+
+So many challenges. You could teach courses on each framework/module. I got stuck on a lot of little things, but thats how you learn.
+
+ I am still not sure when its best to use flask-SQLalchemy queries vs SQLalchemy queries. Also I found that I am rewriting a lot of code on each API, so I think i can consolidate these into single files. For example, get all data for a pump is basically the same query as get all data for a motor. 

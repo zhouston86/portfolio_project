@@ -1,0 +1,10 @@
+- Create random transmitter data in sql
+
+    - set up b-tree index in the sensor data (DONE)
+    - add API to get average, max, and min for each sensor
+
+- refactor apis into functions
+
+- visualize data in matplotlib
+
+- deprecate current value for sensors
