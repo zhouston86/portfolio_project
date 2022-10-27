@@ -1,6 +1,6 @@
 
 Required - Flask
-- put project to github
+x put project to github
 - recreate pg db
 - containerize existing flask application
 - upload image to dockerhub
