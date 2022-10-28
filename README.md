@@ -4,7 +4,7 @@ This project is the SQL portfolio project for nucamp. I chose to use a very simp
 
 ## ER Diagram
 Because a picture is worth a million words, here is the ER diagram describing the database implementation.
-    ![My ER Diagram](/industrial_process_er_rev2.svg)
+    ![My ER Diagram](/docs/industrial_process_er_rev2.svg)
 
 ## Flask/Docker Compose
 This version of the project is built using Docker Compose and Flask. You should be able to build the project using "docker compose up -d" from the terminal. This will build and run a flask web server, postgres database, and a pgadmin container. 
