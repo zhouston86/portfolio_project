@@ -1,5 +1,5 @@
 
-from flask import Blueprint, appcontext_popped, jsonify, request, abort, json
+from flask import Blueprint, jsonify, request, abort
 from ..models import Flow_timeseries, db, Flow_sensor
 import sqlalchemy
 
