@@ -14,5 +14,10 @@ Required - Django
 
 Nice to have
 - add html to run api queries
-    - use flask_restx/swagger
+    x setup flask_restx/swagger
+    x setup flow sensor template
+        x get history
+    x copy out to other devices
+    - add query for vendors-pumps
+    - replace serialize with marshal return formats
 - add api query to weather data in application

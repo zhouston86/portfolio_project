@@ -10,6 +10,13 @@ Because a picture is worth a million words, here is the ER diagram describing th
 This version of the project is built using Docker Compose and Flask. You should be able to build the project using "docker compose up -d" from the terminal. This will build and run a flask web server, postgres database, and a pgadmin container. 
 
 ## API Reference
+
+### Swagger
+
+A Swagger Docs can be accessed at [Swagger](http://localhost:5000/api_v2/doc) . This is the recommmended methods to see API docs.
+
+### Insomnia 
+
 A sample [Insomnia](https://insomnia.rest/) collection is located in [/insomnia_collection](/insomnia_collection)
 
 The REST api has the following endpoints:

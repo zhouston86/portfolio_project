@@ -110,9 +110,7 @@ class Speed_sensor(db.Model):
         return {
             'id': self.id,
             'tag_name': self.tag_name,
-            'model':self.model,
-            'max_range':self.max_range,
-            'min_range':self.min_range,
+            'type':self.type,
             'current_value': self.current_value,
             'motor_id': self.motor_id
         }
@@ -120,13 +118,25 @@ class Speed_sensor(db.Model):
     __tablename__ = 'speed_sensors'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     tag_name = db.Column(db.String(32), unique=True, nullable=False)
-    current_value = db.Column(db.Float, nullable=False)
-    model = db.Column(db.String(128))
-    min_range = db.Column(db.Float)
-    max_range = db.Column(db.Float)
+    type = db.Column(db.String)
+    current_value = db.Column(db.Float, nullable=False) 
     # FK relationship
     motor_id = db.Column(db.Integer, db.ForeignKey('motors.id'))
+    speed_timeseries = db.relationship("Speed_timeseries", back_populates = "speed_sensor")
 
+class Speed_timeseries(db.Model):
+    def serialize(self):
+        return {
+            'sensor_id':self.sensor_id,
+            'time': self.time,
+            'value': self.value
+        }
+    
+    __tablename__ = 'speed_timeseries'
+    time = db.Column(db.Integer, primary_key = True)
+    sensor_id = db.Column(db.Integer, db.ForeignKey('speed_sensors.id'),primary_key = True)
+    value = db.Column(db.Float)
+    speed_sensor = db.relationship("Speed_sensor", back_populates="speed_timeseries")
 
 # vendors-pump models bridge table
 vendors_pump_models = db.Table(
@@ -161,5 +171,5 @@ class Vendor(db.Model):
     # configure sqldb parameters
     __tablename__ = 'vendors'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.String(128), unique=True, nullable=False)
+    name = db.Column(db.String(128), unique=True, nullable=False)
 

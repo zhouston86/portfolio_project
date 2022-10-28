@@ -40,7 +40,7 @@ def create_app(test_config=None):
     app.register_blueprint(speed_sensors.bp)
     app.register_blueprint(test.bp)
 
-    from .api_v2.flow_sensors import flow_sensors_bp
-    app.register_blueprint(flow_sensors_bp.blueprint)
+    from .api_v2 import blueprint as api_v2_blueprint
+    app.register_blueprint(api_v2_blueprint)
 
     return app
