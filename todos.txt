@@ -1,11 +1,11 @@
 
 Required - Flask
 x put project to github
-- recreate pg db
-- containerize existing flask application
+X recreate pg db
+X containerize existing flask application
 - upload image to dockerhub
 - Download project to EC2
-- open port 5000 for flask
+X open port 5000 for flask
 - build project and upload to ECR
 - run project and test
 
@@ -14,4 +14,5 @@ Required - Django
 
 Nice to have
 - add html to run api queries
+    - use flask_restx/swagger
 - add api query to weather data in application
