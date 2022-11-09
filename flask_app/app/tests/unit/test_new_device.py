@@ -1,5 +1,5 @@
-from src.models import db
-from src.models import Flow_sensor
+from flask_app.app.src.models import db
+from flask_app.app.src.models import Flow_sensor
 
 def test_new_flow_sensor(new_flow_sensor):
     """

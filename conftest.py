@@ -1,5 +1,5 @@
-from src.models import db
-from src.models import Flow_sensor
+from flask_app.app.src.models import db
+from flask_app.app.src.models import Flow_sensor
 from pytest import fixture
 import pytest
 import psycopg2
@@ -17,7 +17,7 @@ def new_flow_sensor():
 
 @pytest.fixture(scope='session')
 def session():
-    conn = psycopg2.connect(host="localhost", database="pg", user="postgres")
+    conn = psycopg2.connect(host="pg", database="postgres", user="postgres")
     session = conn.cursor()
     yield session
     # Close the cursor and connection
