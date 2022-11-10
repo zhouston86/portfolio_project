@@ -4,9 +4,9 @@ from flask_app.app.src.models import db, Flow_sensor
 
 
 def test_add_device_db(new_flow_sensor, session):
-    session.add(new_flow_sensor)
-    session.commit()
-    query_result = session.query(Flow_sensor.tag_name == new_flow_sensor.tag_name)
+    db.session.add(new_flow_sensor)
+    db.session.commit()
+    query_result = db.session.query(Flow_sensor.tag_name == new_flow_sensor.tag_name)
     try:
         query_result.serialize()
     except:
@@ -14,5 +14,5 @@ def test_add_device_db(new_flow_sensor, session):
         assert False
     else:
         print(query_result.serialize())
-        session.delete(query_result)
+        db.session.delete(query_result)
         assert True
