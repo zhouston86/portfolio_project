@@ -1,5 +1,7 @@
 # https://docs.docker.com/compose/features-uses/
 
+version: '3.6'
+
 services:
   flask_app:
     image: flask_app

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: G:\My Drive\Training Courses\nucamp_backend\Python\3-DevOps\week4\Kompose\kompose.exe convert
+    kompose.version: 1.23.0 (bc7d9f4f)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pgadmin
+  name: pgadmin
+spec:
+  ports:
+    - name: "5433"
+      port: 5433
+      targetPort: 5433
+  selector:
+    io.kompose.service: pgadmin
+status:
+  loadBalancer: {}

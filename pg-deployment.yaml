@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: G:\My Drive\Training Courses\nucamp_backend\Python\3-DevOps\week4\Kompose\kompose.exe convert
+    kompose.version: 1.23.0 (bc7d9f4f)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: pg
+  name: pg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: pg
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: G:\My Drive\Training Courses\nucamp_backend\Python\3-DevOps\week4\Kompose\kompose.exe convert
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/nunet: "true"
+        io.kompose.service: pg
+    spec:
+      containers:
+        - env:
+            - name: PGUSER
+              value: postgres
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+            - name: POSTGRES_USER
+              value: postgres
+          image: postgres:14.1-alpine3.15
+          name: pg-container
+          ports:
+            - containerPort: 5432
+          resources: {}
+          volumeMounts:
+            - mountPath: /docker-entrypoint-initdb.d/
+              name: C
+      restartPolicy: Always
+      volumes:
+        - name: C
+          persistentVolumeClaim:
+            claimName: C
+status: {}
