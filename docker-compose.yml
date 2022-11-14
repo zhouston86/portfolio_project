@@ -1,12 +1,14 @@
 # https://docs.docker.com/compose/features-uses/
 
+version: '3.6'
+
 services:
   flask_app:
     image: flask_app
-    command: python flask/app/wsgi.py
+    command: python flask_app/app/wsgi.py
     build:
       context: .
-      dockerfile: /flask/app/Dockerfile
+      dockerfile: /flask_app/app/Dockerfile
     ports:
       - 5000:5000
 
