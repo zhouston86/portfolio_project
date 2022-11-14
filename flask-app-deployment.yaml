@@ -25,11 +25,12 @@ spec:
         io.kompose.service: flask-app
     spec:
       containers:
-        - args:
+        - name: flask-app
+          image: zphouston86/flask_app:v2
+          #command: [ "/bin/bash", "-c", "sleep 1000000" ]
+          args:
             - python
             - flask_app/app/wsgi.py
-          image: zphouston86/flask_app:latest
-          name: flask-app
           ports:
             - containerPort: 5000
           resources: {}

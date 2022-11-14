@@ -1,0 +1,25 @@
+1. create deploys 
+    kubectl create -f flask-app-deployment.yaml
+    kubectl create -f pg-deployment.yaml
+    kubectl create -f pgadmin-deployment.yaml
+
+2. lauch minikube dash
+    minikube dashboard
+
+3. start kube proxy server
+    kubectl proxy
+
+4. expose flask and pg proxy ports
+    kubectl expose deployment/flask-app --type="NodePort" --port 5000
+    kubectl expose deployment/pg --type="NodePort" --port 5432
+    kubectl expose deployment/pgadmin --type="NodePort" --port 5433
+
+5. start services
+    minikube service flask-app
+    minikube service pg
+    minikube service pgadmin
+
+7. recover sql backup
+    kubectl cp pg/sql_files/my_pumps_dump.sql pg-7dcfd4b7cd-vpbsz:/tmp
+    kubect exec {pg pod name} psql postgres -f my_pumps_dump.sql
+

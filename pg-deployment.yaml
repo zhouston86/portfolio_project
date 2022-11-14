@@ -40,10 +40,10 @@ spec:
           resources: {}
           volumeMounts:
             - mountPath: /docker-entrypoint-initdb.d/
-              name: C
+              name: c
       restartPolicy: Always
       volumes:
-        - name: C
+        - name: c
           persistentVolumeClaim:
-            claimName: C
+            claimName: c
 status: {}
