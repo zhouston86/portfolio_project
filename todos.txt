@@ -1,15 +1,4 @@
 
-Required - Flask
-x put project to github
-X recreate pg db
-X containerize existing flask application
-- upload image to dockerhub
-- Download project to EC2
-X open port 5000 for flask
-- build project and upload to ECR
-- run project and test
-
-
 Required - Django
 
 Nice to have
