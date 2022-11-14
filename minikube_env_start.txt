@@ -20,6 +20,9 @@
     minikube service pgadmin
 
 7. recover sql backup
-    kubectl cp pg/sql_files/my_pumps_dump.sql pg-7dcfd4b7cd-vpbsz:/tmp
-    kubect exec {pg pod name} psql postgres -f my_pumps_dump.sql
+    PGPOD = $( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
+    kubectl cp pg/sql_files/my_pumps_dump.sql $PGPOD:/tmp
+    kubectl exec $PGPOD -- psql postgres -f tmp/my_pumps_dump.sql
 
+8. get open services and connect
+    kubectl get services

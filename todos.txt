@@ -10,3 +10,11 @@ Nice to have
     - add query for vendors-pumps
     - replace serialize with marshal return formats
 - add api query to weather data in application
+
+Actions 
+1. Connect to aks using az cli 
+2. connect to dockerhub
+3. if possible, build docker containers from GH Actions and push to docker hub
+4. deploy all images to aks (using yamls)
+5. expose ports
+6. start services
