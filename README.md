@@ -9,6 +9,9 @@ Because a picture is worth a million words, here is the ER diagram describing th
 ## Flask/Docker Compose
 This version of the project is built using Docker Compose and Flask. You should be able to build the project using "docker compose up -d" from the terminal. This will build and run a flask web server, postgres database, and a pgadmin container. 
 
+## Kubernetes
+The project can also be deployed using kubernetes. See "minikube_env_start.txt" on how to start a local minikube environment running the flask application, postgres database, and pgadmin. In the next revision of the project, I am working on creating a github actions deployment pipeline to a cloud service provider (Azure).
+
 ## API Reference
 
 ### Swagger
