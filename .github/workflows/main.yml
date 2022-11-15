@@ -39,7 +39,8 @@ jobs:
         run: az aks get-credentials --resource-group flask-portfolio-project --name k8-cluster-flask 
 
       - name: backup posgres db
-        run: PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
-        run: kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql
+        run: |
+        PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
+        kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql
 
       #- name: Delete Old Deployments  
