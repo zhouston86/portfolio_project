@@ -42,7 +42,7 @@ jobs:
         run: bash ${GITHUB_WORKSPACE}/kube-start.sh
 
       - name: delete old deployments
-        run: kubectl create -f flask-app-deployment.yaml
+        run: bash kubectl create -f flask-app-deployment.yaml
 
 
       #- name: Delete Old Deployments  
