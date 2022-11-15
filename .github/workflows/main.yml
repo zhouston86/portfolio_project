@@ -49,13 +49,15 @@ jobs:
           kubectl delete deployment pgadmin
 
       - name: create deployments
+        continue-on-error: true
         run: |
-          kubectl create -f flask-app-deployment.yaml
           kubectl create -f c-persistentvolumeclaim.yaml
+          kubectl create -f flask-app-deployment.yaml
           kubectl create -f pg-deployment.yaml
           kubectl create -f pgadmin-deployment.yaml
 
       - name: Expose ports
+        continue-on-error: true
         run: |
           kubectl proxy
           kubectl expose deployment/flask-app --type="LoadBalancer" --port 5000
