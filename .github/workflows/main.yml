@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Azure Login
         uses: Azure/login@v1
+        with:
+          creds: ${{ secrets.AZ_CRED1 }}
 
       - uses: actions/checkout@v3
       - name: Set up Python ${{ matrix.python-version }}
