@@ -3,9 +3,9 @@
 PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
 kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql
 
-kubectl delete deployment flask-app
-kubectl delete deployment pg
-kubectl delete deployment pgadmin
+# kubectl delete deployment flask-app
+# kubectl delete deployment pg
+# kubectl delete deployment pgadmin
 
 # kubectl create -f flask-app-deployment.yaml
 # kubectl create -f c-persistentvolumeclaim.yaml
