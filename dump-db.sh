@@ -1,7 +1,7 @@
 # dump db backup
 PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
 
-LEN=$( $PGPOD | wc -c)
+LEN=$( echo -n $PGPOD | wc -m)
 echo $LEN
 
 if [ $LEN -gt 0 ]
