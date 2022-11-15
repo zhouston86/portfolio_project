@@ -75,12 +75,15 @@ jobs:
       - name: Expose ports
         continue-on-error: true
         run: kubectl expose deployment/pg --type="NodePort" --port 5432
-        
+
       - name: Expose ports
         continue-on-error: true
         run: kubectl expose deployment/pgadmin --type="LoadBalancer" --port 5433
 
+      - name: discover pods
+        run: echo "kubectl get pods"
+
       - name: call db recovery script
         continue-on-error: true
-        run: bash ${GITHUB_WORKSPACE}/recover-db.sh
+        run: bash ${GITHUB_WORKSPACE}/recover-db-local.sh
 
