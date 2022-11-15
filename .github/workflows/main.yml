@@ -1,6 +1,6 @@
 
-name: Python package
-run-name: ${{ github.actor }} is learning GitHub Actions
+name: flask-app
+run-name: ${{ github.actor }}s flask app
 
 on: [push]
 
