@@ -10,7 +10,10 @@ Because a picture is worth a million words, here is the ER diagram describing th
 This version of the project is built using Docker Compose and Flask. You should be able to build the project using "docker compose up -d" from the terminal. This will build and run a flask web server, postgres database, and a pgadmin container. 
 
 ## Kubernetes
-The project can also be deployed using kubernetes. See "minikube_env_start.txt" on how to start a local minikube environment running the flask application, postgres database, and pgadmin. In the next revision of the project, I am working on creating a github actions deployment pipeline to a cloud service provider (Azure).
+The project can also be deployed using kubernetes. See "minikube_env_start.txt" on how to start a local minikube environment running the flask application, postgres database, and pgadmin.
+
+## Azure CI/CD
+The Github actions is configured to deploy the project to Azure. However the service principle is a GitHub secret that any other contributors would need access to. To deploy this in your own Azure environment, you just need to setup AKS with a container node, then create your own secret [using the link here](https://github.com/marketplace/actions/azure-login).
 
 ## API Reference
 
