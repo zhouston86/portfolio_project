@@ -38,9 +38,7 @@ jobs:
       - name: set Kube context
         run: az aks get-credentials --resource-group flask-portfolio-project --name k8-cluster-flask 
 
-      - name: backup posgres db
-        run: |
-        echo "PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")""
-        echo "kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql"
+      - name: call startup bash script
+        run: bash ${GITHUB_WORKSPACE}/kube-start.sh
 
       #- name: Delete Old Deployments  
