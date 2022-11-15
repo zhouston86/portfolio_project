@@ -26,10 +26,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # # - name: Test with pytest
       # #   run: |
@@ -41,8 +41,8 @@ jobs:
       - name: call startup bash script
         run: bash ${GITHUB_WORKSPACE}/kube-start.sh
 
-      - name: delete old deployments
-        run: bash kubectl create -f flask-app-deployment.yaml
+      - name: create deployments
+        run: kubectl create -f flask-app-deployment.yaml
 
 
       #- name: Delete Old Deployments  
