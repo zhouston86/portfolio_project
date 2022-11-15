@@ -25,10 +25,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      # - name: Install dependencies
+      #   run: |
+      #     python -m pip install --upgrade pip
+      #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       # # - name: Test with pytest
       # #   run: |
@@ -41,27 +41,44 @@ jobs:
         continue-on-error: true
         run: bash ${GITHUB_WORKSPACE}/dump-db.sh
 
-      - name: delete old deployments
+      - name: delete old flask
         continue-on-error: true
-        run: |
-          kubectl delete deployment flask-app
-          kubectl delete deployment pg
-          kubectl delete deployment pgadmin
+        run: kubectl delete deployment flask-app
 
-      - name: create deployments
+      - name: delete old pg
         continue-on-error: true
-        run: |
-          kubectl create -f c-persistentvolumeclaim.yaml
-          kubectl create -f flask-app-deployment.yaml
-          kubectl create -f pg-deployment.yaml
-          kubectl create -f pgadmin-deployment.yaml
+        run: kubectl delete deployment pg
+
+      - name: delete old pgadmin
+        continue-on-error: true
+        run: kubectl delete deployment pgadmin
+
+      - name: create persistent storage deployment
+        continue-on-error: true
+        run: kubectl create -f C-persistentvolumeclaim.yaml
+
+      - name: create flask-app deployment
+        continue-on-error: true
+        run: kubectl create -f flask-app-deployment.yaml
+
+      - name: create pg-deployment deployment
+        continue-on-error: true
+        run: kubectl create -f pg-deployment.yaml
+
+      - name: create pgadmin deployments
+        continue-on-error: true
+        run: kubectl create -f pgadmin-deployment.yaml
 
       - name: Expose ports
         continue-on-error: true
-        run: |
-          kubectl expose deployment/flask-app --type="LoadBalancer" --port 5000
-          kubectl expose deployment/pg --type="NodePort" --port 5432
-          kubectl expose deployment/pgadmin --type="LoadBalancer" --port 5433
+        run: kubectl expose deployment/flask-app --type="LoadBalancer" --port 5000
+      - name: Expose ports
+        continue-on-error: true
+        run: kubectl expose deployment/pg --type="NodePort" --port 5432
+        
+      - name: Expose ports
+        continue-on-error: true
+        run: kubectl expose deployment/pgadmin --type="LoadBalancer" --port 5433
 
       - name: call db recovery script
         continue-on-error: true
