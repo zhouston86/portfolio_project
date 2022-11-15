@@ -1,0 +1,32 @@
+- Start on ER screen
+	- I decided to continue with the profile project used in the SQL portion of the course, containerizing it and hosting it in the cloud.
+	
+	
+	- the database contains information for industrial equipment. I actually selected this case due to my background working in engineering and with industrial digital twins.  I make mock data for most of the entries.
+	
+	- This is a swagger UI that is part of the flask application. It allows users to see documentation and test api queries without needing to read help files and use a tool like insomnia. 
+
+		
+	- There are actually two versions of the API, the first was built for insomnia, and we can use that version as well.
+
+	- I can show you a simple example creating a flow sensor. I  set up flow sensors to have an optional foreign key to measure the flow of a pump.
+	
+	- The application is currently running on azure using azure kubernetes service
+	
+	- The database application consists of a flask server, postgres database, and a pgadmin server. I didn't choose flask over django for any special reason, I intend to build both to get better experience with both.
+	
+	- All three services run in docker containers, so i didnt use any azure database services, although you could easily enough move the database to Azure SQL or similar.
+	
+	- I also used dockerhub to host images rather than Azure ECR, just for cost savings and reduce complexity.
+	
+	- Also, instead of using a D2 for the node in kubernets, I used a B2s, which is a burstable server, and is alot cheaper if you only run it infrequently.
+
+	- its actually a curious thing i learned in my last job is that deploying containers can be more cost effective than using azure services like functions or database services.
+
+	- i had a few big challenges.
+	
+		first was really understanding the configuration for flask, docker compose, kubernetes, pytest, etc... I can tell each package has a lot of depth, and i needed to go deeper than the course exercises in most. So there was a lot of self learning through docs and online resources, but I think that is life as a developer anyways.
+
+		Second was really understanding how the flask relate packages worked together like flask-sqlalchemy, flask-pytest, and a couple others. so I kind of had to start from scratch to really understand how they were setup and what they do.
+		
+	- Overall i am happy with my project. I have started work on setting up the CI/CD pipeline with github actions. there is some challenge there getting github synced with dockerhub and 

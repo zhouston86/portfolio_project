@@ -3,9 +3,9 @@ kubectl create -f c-persistentvolumeclaim.yaml
 kubectl create -f pg-deployment.yaml
 kubectl create -f pgadmin-deployment.yaml
 kubectl proxy
-kubectl expose deployment/flask-app --type="NodePort" --port 5000
+kubectl expose deployment/flask-app --type="LoadBalancer" --port 5000
 kubectl expose deployment/pg --type="NodePort" --port 5432
-kubectl expose deployment/pgadmin --type="NodePort" --port 5433
+kubectl expose deployment/pgadmin --type="LoadBalancer" --port 5433
 
 # get pg pod and recover db backup
 PGPOD = $( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
