@@ -40,7 +40,7 @@ jobs:
 
       - name: backup posgres db
         run: |
-        PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")
-        kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql
+        echo "PGPOD=$( kubectl get pods --no-headers -o custom-columns=":metadata.name" | grep "pg-")""
+        echo "kubectl exec $PGPOD -- pg_dump postgres > pg/my_pumps_dump2.sql"
 
       #- name: Delete Old Deployments  
