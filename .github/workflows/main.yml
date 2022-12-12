@@ -6,7 +6,7 @@ on: [push]
 
 jobs:
 
-  build:a
+  build:
 
     runs-on: ubuntu-latest
     strategy:
