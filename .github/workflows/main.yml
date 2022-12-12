@@ -6,7 +6,7 @@ on: [push]
 
 jobs:
 
-  build:
+  build:a
 
     runs-on: ubuntu-latest
     strategy:
@@ -85,5 +85,5 @@ jobs:
 
       - name: call db recovery script
         continue-on-error: true
-        run: bash ${GITHUB_WORKSPACE}/recover-db-local.sh
+        run: bash ${GITHUB_WORKSPACE}/recover-db.sh
 
